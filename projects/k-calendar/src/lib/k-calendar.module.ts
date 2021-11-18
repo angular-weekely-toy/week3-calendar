@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { KCalendarComponent } from './k-calendar.component';
+import {CommonModule} from "@angular/common";
 
 
 
@@ -8,6 +9,7 @@ import { KCalendarComponent } from './k-calendar.component';
     KCalendarComponent
   ],
   imports: [
+    CommonModule
   ],
   exports: [
     KCalendarComponent
