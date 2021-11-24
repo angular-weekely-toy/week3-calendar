@@ -328,13 +328,13 @@
 <div class="content" role="main">
 
   <main>
-    <lib-k-calendar></lib-k-calendar>
+    <lib-k-calendar [datas]="datas"></lib-k-calendar>
   </main>
   <!-- Footer -->
   <footer>
       footer
   </footer>
-
+  <button (click)="changeData()">change Data</button>
 </div>
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
