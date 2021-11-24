@@ -12,16 +12,19 @@ import {Component, Input, OnInit, SimpleChanges} from '@angular/core';
         <button (click)="plusMonth(1)">👉</button>
       </div>
     </div>
-    <div class="container">
-      <div class="item">{{days[0]}}</div>
-      <div class="item">{{days[1]}}</div>
-      <div class="item">{{days[2]}}</div>
-      <div class="item">{{days[3]}}</div>
-      <div class="item">{{days[4]}}</div>
-      <div class="item">{{days[5]}}</div>
-      <div class="item">{{days[6]}}</div>
-      <div class="item" *ngFor="let item of items" (click)="focusDate(item)">{{item?.date?.getDate()}} <sup
-        *ngIf="item?.datas?.length">({{item?.datas?.length}})</sup></div>
+    <div [ngClass]="{container: mode === 'grid', 'container-block': mode === 'block'}">
+      <div *ngIf="mode ==='grid'" class="item">{{days[0]}}</div>
+      <div *ngIf="mode ==='grid'" class="item">{{days[1]}}</div>
+      <div *ngIf="mode ==='grid'" class="item">{{days[2]}}</div>
+      <div *ngIf="mode ==='grid'" class="item">{{days[3]}}</div>
+      <div *ngIf="mode ==='grid'" class="item">{{days[4]}}</div>
+      <div *ngIf="mode ==='grid'" class="item">{{days[5]}}</div>
+      <div *ngIf="mode ==='grid'" class="item">{{days[6]}}</div>
+      <div class="item" *ngFor="let item of items" (click)="focusDate(item)">
+        {{item?.date?.getDate()}}
+        <span *ngIf="item?.date && mode === 'block'">{{getDayOfWeekName(item?.date)}}</span>
+        <sup *ngIf="item?.datas?.length">({{item?.datas?.length}})</sup>
+      </div>
     </div>
     <div *ngIf="currentItem">
       <h3>{{getYear(currentItem.date)}}-{{getMonth(currentItem.date)}}-{{getDate(currentItem.date)}}</h3>
@@ -44,6 +47,11 @@ import {Component, Input, OnInit, SimpleChanges} from '@angular/core';
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr
       }
+
+      .container-block {
+        display: grid;
+        grid-template-columns: 1fr
+      }
     `
   ]
 })
@@ -54,6 +62,9 @@ export class KCalendarComponent implements OnInit {
   // 수개월 = ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'];
   date = new Date();
   items: { date: Date, datas: { date: Date, title: string }[] }[] = [];
+
+  @Input()
+  mode: 'grid'|'block' = 'grid'
 
   @Input()
   datas: { date: Date, title: string }[] = [];
@@ -68,7 +79,7 @@ export class KCalendarComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    // console.log(changes);
+    console.log(changes, this.mode);
     this.setItem();
     // console.log(changes.myInput.currentValue);
   }
