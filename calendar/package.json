@@ -19,6 +19,9 @@
     "@angular/platform-browser": "~10.0.9",
     "@angular/platform-browser-dynamic": "~10.0.9",
     "@angular/router": "~10.0.9",
+    "angular-calendar": "^0.28.28",
+    "date-fns": "^2.26.0",
+    "ng-zorro-antd": "^10.2.2",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"

@@ -1,0 +1,26 @@
+
+.select_nav_wrap {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+  .season_select_nav {
+    display: flex;
+    align-items: center;
+    margin: auto;
+    font-size: 25px;
+    font-weight: bold;
+    height: 40px;
+    line-height: 40px;
+
+    .sel_season {
+      margin: 0 5px;
+      width: 100px;
+      text-align: center;
+    }
+  }
+}
+
+
+::ng-deep .cal-month-view .cal-event {
+  display: none;
+}
