@@ -1,0 +1,38 @@
+nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  padding-bottom: 15px;
+  border-bottom: 1px solid black;
+
+  div {
+    button {
+      margin: 0 5px;
+      &:first-child {
+        margin-left: 0;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+
+      &.active {
+        background-color: brown;
+        border: 1px solid brown;
+        color: white;
+      }
+    }
+  }
+
+  button {
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 4px;
+    background-color: white;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
