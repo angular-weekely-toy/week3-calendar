@@ -14,6 +14,7 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { DetailBoardModalComponent } from './detail-board-modal/detail-board-modal.component';
 import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
+import { FormsModule } from '@angular/forms';
 
 
 const icons: IconDefinition[] = [ PlusOutline ];
@@ -21,6 +22,7 @@ const icons: IconDefinition[] = [ PlusOutline ];
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     BrowserAnimationsModule,
     CalendarModule.forRoot({
       provide: DateAdapter,

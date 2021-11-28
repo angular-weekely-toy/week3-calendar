@@ -1,4 +1,6 @@
+import { Account } from './../../cores/models/account.model';
 import { Component, Input, OnInit } from '@angular/core';
+import { NzModalRef } from 'ng-zorro-antd/modal';
 
 @Component({
   selector: 'app-new-board-modal',
@@ -8,16 +10,20 @@ import { Component, Input, OnInit } from '@angular/core';
 export class NewBoardModalComponent implements OnInit {
   @Input() data: any;
 
+  account = new Account();
 
   currency = (value: number) => value ? '￦' + this.addComma(value) : '';
 
-  constructor() { }
+  constructor(
+    private nzModalRef: NzModalRef,
+  ) { }
 
   ngOnInit() {
   }
 
   onSubmit() {
-
+    console.log(this.account);
+    this.nzModalRef.destroy(this.account);
   }
 
 

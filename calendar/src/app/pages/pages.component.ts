@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CalendarEvent, CalendarView } from 'angular-calendar';
 import { isSameDay } from 'date-fns';
 import { NzModalService } from 'ng-zorro-antd/modal';
@@ -26,18 +26,19 @@ export class PagesComponent implements OnInit {
 
   constructor(
     private nzModalService: NzModalService,
+    private ref: ChangeDetectorRef,
   ) { }
 
   ngOnInit() {
     this.events = [{
-      title: '<p>하하하</p>',
+      title: '<p>2000</p>',
       start: new Date(),
     }]
   }
 
 
   dayClicked(event, { date, events }: { date: Date; events: CalendarEvent[] }): void {
-    
+
     // 검은색 경기정보 나오는 화면보이기 감추기
     this.activeDayIsOpen = (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) || events.length === 0 ? false : true;
 
@@ -63,14 +64,20 @@ export class PagesComponent implements OnInit {
     const modal = this.nzModalService.create({
       nzTitle: '지출',
       nzContent: NewBoardModalComponent,
-      nzComponentParams: {
-        data: {
-        }
-      },
       nzFooter: null,
       nzWidth: 360,
-      // nzClosable: false,
-      // nzMaskClosable: false
+    });
+
+    modal.afterClose.subscribe((result) => {
+      if (!result) { return; }
+
+      this.events = [
+        ...this.events,
+        {
+          title: `<p>${result.price}</p>`,
+          start: new Date(result.datetime),
+        }
+      ];
     });
   }
 
@@ -84,8 +91,6 @@ export class PagesComponent implements OnInit {
       },
       nzFooter: null,
       nzWidth: 360,
-      // nzClosable: false,
-      // nzMaskClosable: false
     });
   }
 }

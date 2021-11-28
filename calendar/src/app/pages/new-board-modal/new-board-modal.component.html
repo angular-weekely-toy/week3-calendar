@@ -1,17 +1,18 @@
-<nz-date-picker [nzSize]="'large'"></nz-date-picker>
+<div class="new_board_wrap">
 
+  <nz-date-picker [nzSize]="'large'" [(ngModel)]="account.datetime"></nz-date-picker>
 
-
-<div>
-
-  <input nz-input placeholder="분류" nzSize="large" />
+  <input nz-input placeholder="분류" nzSize="large" [(ngModel)]="account.type" />
 
   <nz-input-number nzSize="large" [nzMin]="0" [nzMax]="1000000" [nzStep]="1000" [nzPlaceHolder]="'금액'"
-    [nzFormatter]="currency" [nzInputMode]="'numeric'">
+    [nzFormatter]="currency" [nzInputMode]="'numeric'" [(ngModel)]="account.price">
   </nz-input-number>
 
-  <textarea nz-input placeholder="내용" [nzAutosize]="{ minRows: 2, maxRows: 6 }"></textarea>
+  <textarea nz-input placeholder="내용" [nzAutosize]="{ minRows: 3, maxRows: 6 }" [(ngModel)]="account.detail"></textarea>
 
-  <button nz-button [nzSize]="'large'" nzType="default" (click)="onSubmit()">저장하기</button>
+  <div class="btn_area">
+    <button nz-button [nzSize]="'large'" nzType="default" (click)="onSubmit()">저장하기</button>
+  </div>
+
 
 </div>
