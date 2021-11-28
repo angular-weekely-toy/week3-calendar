@@ -25,7 +25,11 @@ registerLocaleData(ko);
     HttpClientModule,
     BrowserAnimationsModule
   ],
-  providers: [{ provide: NZ_I18N, useValue: ko_KR }],
-  bootstrap: [AppComponent]
+  providers: [
+    { provide: NZ_I18N, useValue: ko_KR }
+  ],
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }

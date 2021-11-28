@@ -1,5 +1,3 @@
-
-
 <div class="select_nav_wrap">
   <div class="season_select_nav">
     <button nz-button [nzSize]="'large'" nzType="text" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate"
@@ -11,7 +9,8 @@
       (viewDateChange)="closeOpenMonthViewDay()">
       <i nz-icon nzType="right" nzTheme="outline"></i>
     </button>
-    <button nz-button [nzSize]="'small'" nzType="default" mwlCalendarToday [(viewDate)]="viewDate" (click)="setToday()">현재</button>
+    <button nz-button [nzSize]="'small'" nzType="default" mwlCalendarToday [(viewDate)]="viewDate"
+      (click)="setToday()">현재</button>
   </div>
 </div>
 
@@ -31,4 +30,11 @@
     [activeDayIsOpen]="activeDayIsOpen" (dayClicked)="dayClicked($event, $event.day)"
     (eventClicked)="calendarEvent('Clicked', $event.event)">
   </mwl-calendar-month-view>
+</div>
+
+<!-- 추가 버튼 -->
+<div class="fab_btn_area">
+  <button nz-button nzType="primary" [nzSize]="'large'" class="fab_btn" nzShape="circle" (click)="onOpenNewModal()">
+    <i nz-icon nzType="plus" nzTheme="outline"></i>
+  </button>
 </div>

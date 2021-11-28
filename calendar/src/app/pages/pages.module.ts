@@ -6,6 +6,17 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { IconDefinition } from "@ant-design/icons-angular";
+import { PlusOutline } from "@ant-design/icons-angular/icons";
+import { NewBoardModalComponent } from "./new-board-modal/new-board-modal.component";
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { DetailBoardModalComponent } from './detail-board-modal/detail-board-modal.component';
+import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
+
+
+const icons: IconDefinition[] = [ PlusOutline ];
 
 @NgModule({
   imports: [
@@ -16,8 +27,20 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
       useFactory: adapterFactory,
     }),
     NzButtonModule,
-    NzIconModule,
+    NzIconModule.forRoot(icons),
+    NzModalModule,
+    NzDatePickerModule,
+    NzInputModule,
+    NzInputNumberModule
   ],
-  declarations: [PagesComponent]
+  declarations: [
+    PagesComponent,
+    NewBoardModalComponent,
+    DetailBoardModalComponent
+  ],
+  entryComponents: [
+    NewBoardModalComponent,
+    DetailBoardModalComponent
+  ]
 })
 export class PagesModule { }

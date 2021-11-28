@@ -24,3 +24,19 @@
 ::ng-deep .cal-month-view .cal-event {
   display: none;
 }
+
+.fab_btn_area {
+  position: fixed;
+  right: 20px;
+  bottom: 10px;
+
+  .fab_btn {
+    width: 60px;
+    height: 60px;
+    margin: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2), 0 6px 10px rgba(0, 0, 0, 0.14), 0 1px 18px rgba(0, 0, 0, 0.12);
+  }
+}
